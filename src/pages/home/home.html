@@ -1,14 +1,35 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      <div>H.A.S TaskApp</div>
+      <div class="subtitle">tap + to add tasks</div>
     </ion-title>
+
+    <ion-buttons right>
+      <button ion-button icon-only (click)="addItem()"><ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content>
+  <ion-list>
+    <ion-item-sliding *ngFor="let task of tasks" >
+      <ion-item (click)="viewItem(item)">{{task.title}}</ion-item>
+      <ion-item-options>
+        <button ion-button color="primary" icon-left (click)="removeItem(item)" class="edit-button">
+          <ion-icon name="trash"></ion-icon>
+          Delete
+        </button>
+        <button ion-button color="secondary" icon-left (click)="addItem()" class="edit-button">
+          <ion-icon name="brush"></ion-icon>
+          Edit
+        </button>
+        <button ion-button color="light" icon-left (click)="addItem()" class="edit-button">
+          <ion-icon name="checkmark"></ion-icon>
+          Done
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>
