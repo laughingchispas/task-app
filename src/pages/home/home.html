@@ -2,7 +2,7 @@
   <ion-navbar>
     <ion-title>
       <div>H.A.S TaskApp</div>
-      <div class="subtitle">tap + to add tasks</div>
+      <div class="subtitle">tap + to add task categories</div>
     </ion-title>
 
     <ion-buttons right>
@@ -15,7 +15,8 @@
 <ion-content>
   <ion-list>
     <ion-item-sliding *ngFor="let task of tasks" >
-      <ion-item (click)="viewTask(task)">{{task.title}}</ion-item>
+      <ion-item (click)="viewTask(task)">{{task.title}} <ion-icon class="arrow-indicaiton" name="arrow-forward" item-right></ion-icon></ion-item>
+
       <ion-item-options>
         <button ion-button color="primary" icon-left (click)="removeTask(task)" class="edit-button">
           <ion-icon name="trash"></ion-icon>

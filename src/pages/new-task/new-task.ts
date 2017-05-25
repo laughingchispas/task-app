@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ViewController } from 'ionic-angular';
+import { NavController, ViewController} from 'ionic-angular';
 
 /**
  * Generated class for the NewTaskPage page.
@@ -20,6 +20,7 @@ export class NewTaskPage {
 
   ionViewDidLoad() {
   }
+
 
   saveTask(){
     let newTask = {

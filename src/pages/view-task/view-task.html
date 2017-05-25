@@ -5,14 +5,37 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <ion-navbar color="secondary">
+  <ion-navbar color="light">
     <ion-title>
-      {{title}}
+      {{title}} Category
+      <div class="subtitle">tap + to add tasks</div>
     </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="addItem()"><ion-icon name="add"></ion-icon></button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+  <ion-list>
+    <ion-item-sliding *ngFor="let item of items">
+      <ion-item>{{item.item_title}} <ion-icon name="add-circle" item-right></ion-icon></ion-item>
 
+      <ion-item-options>
+        <button ion-button color="primary" icon-left (click)="removeTask(task)" class="edit-button">
+          <ion-icon name="trash"></ion-icon>
+          Delete
+        </button>
+        <button ion-button color="secondary" icon-left (click)="editTask(task)" class="edit-button">
+          <ion-icon name="brush"></ion-icon>
+          Edit
+        </button>
+        <button ion-button color="light" icon-left (click)="taskDone(task)" class="edit-button">
+          <ion-icon name="checkmark"></ion-icon>
+          Done
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>
