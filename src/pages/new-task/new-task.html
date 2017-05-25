@@ -5,14 +5,24 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>newTask</ion-title>
-  </ion-navbar>
-
+  <ion-toolbar color="Secondary">
+    <ion-title>
+      New Task Category
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="close()"><ion-icon name="close"></ion-icon></button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Title</ion-label>
+      <ion-input type="text" [(ngModel)]="title"></ion-input>
+    </ion-item>
+  </ion-list>
 
-<ion-content padding>
+  <button full ion-button color="Primary" (click)="saveTask(task)">Save Task</button>
 
 </ion-content>

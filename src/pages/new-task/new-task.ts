@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, ViewController } from 'ionic-angular';
 
 /**
  * Generated class for the NewTaskPage page.
@@ -7,18 +7,29 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
-@IonicPage()
+
 @Component({
   selector: 'page-new-task',
   templateUrl: 'new-task.html',
 })
 export class NewTaskPage {
+  title;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public view: ViewController) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad NewTaskPage');
+  }
+
+  saveTask(){
+    let newTask = {
+      title: this.title
+    };
+    this.view.dismiss(newTask);
+  }
+
+  close(){
+    this.view.dismiss();
   }
 
 }

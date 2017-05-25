@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { ModalController, NavController } from 'ionic-angular';
+import { NewTaskPage } from '../new-task/new-task';
+
+import { ViewTaskPage } from '../view-task/view-task';
 
 @Component({
   selector: 'page-home',
@@ -7,18 +10,35 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  public tasks;
+  public tasks =[];
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController) {
   }
 
   ionViewDidLoad(){
-    this.tasks = [
-      {title: 'task one'},
-      {title: 'task two'},
-      {title: 'task three'},
-      {title: 'task four'}
-    ];
   }
+
+  addTask(){
+    let addModal = this.modalCtrl.create(NewTaskPage);
+    addModal.onDidDismiss((task) => {
+      if(task){
+        this.saveTask(task);
+      }
+    });
+
+    addModal.present();
+
+  }
+
+  saveTask(task){
+    this.tasks.push(task);
+  }
+
+  viewTask(task){
+    this.navCtrl.push(ViewTaskPage, {
+      task: task
+    });
+  }
+
 
 }
