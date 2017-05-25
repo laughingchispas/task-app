@@ -10,6 +10,10 @@ import { NewSubTaskPage } from '../pages/new-sub-task/new-sub-task';
 import { NewTaskPage } from '../pages/new-task/new-task';
 import { ViewTaskPage } from '../pages/view-task/view-task';
 
+import { Data } from '../providers/data/data';
+import { IonicStorageModule } from '@ionic/storage';
+
+
 @NgModule({
   declarations: [
     MyApp,
@@ -20,7 +24,8 @@ import { ViewTaskPage } from '../pages/view-task/view-task';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -33,7 +38,8 @@ import { ViewTaskPage } from '../pages/view-task/view-task';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    Data
   ]
 })
 export class AppModule {}

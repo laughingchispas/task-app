@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { ModalController, NavController } from 'ionic-angular';
 import { NewTaskPage } from '../new-task/new-task';
 
+import { Data } from '../../providers/data/data';
+
 import { ViewTaskPage } from '../view-task/view-task';
 
 @Component({
@@ -12,7 +14,14 @@ export class HomePage {
 
   public tasks =[];
 
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public dataService: Data) {
+    this.dataService.getData().then((taskdata) => {
+
+      if(taskdata){
+        this.tasks = JSON.parse(taskdata);
+      }
+
+    });
   }
 
   ionViewDidLoad(){
@@ -32,6 +41,7 @@ export class HomePage {
 
   saveTask(task){
     this.tasks.push(task);
+    this.dataService.save(this.tasks);
   }
 
   viewTask(task){
