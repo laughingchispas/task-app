@@ -15,17 +15,17 @@
 <ion-content>
   <ion-list>
     <ion-item-sliding *ngFor="let task of tasks" >
-      <ion-item (click)="viewItem(item)">{{task.title}}</ion-item>
+      <ion-item (click)="viewTask(task)">{{task.title}}</ion-item>
       <ion-item-options>
-        <button ion-button color="primary" icon-left (click)="removeItem(item)" class="edit-button">
+        <button ion-button color="primary" icon-left (click)="removeTask(task)" class="edit-button">
           <ion-icon name="trash"></ion-icon>
           Delete
         </button>
-        <button ion-button color="secondary" icon-left (click)="addItem()" class="edit-button">
+        <button ion-button color="secondary" icon-left (click)="editTask(task)" class="edit-button">
           <ion-icon name="brush"></ion-icon>
           Edit
         </button>
-        <button ion-button color="light" icon-left (click)="addItem()" class="edit-button">
+        <button ion-button color="light" icon-left (click)="taskDone(task)" class="edit-button">
           <ion-icon name="checkmark"></ion-icon>
           Done
         </button>
